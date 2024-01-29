@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Register</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("/static/images/login2.jpeg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+      }
+
+      .register {
+        width: 30%;
+        height: auto;
+        margin-top: -20px;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        background-color: #388087;
+        margin-top: -30px;
+        height: 40px;
+      }
+
+      #loginimg {
+        width: 80%;
+        height: 10%;
+      }
+
+      #login,
+      #register {
+        font-size: x-large;
+        padding: 5px;
+      }
+
+      .form-component {
+        text-align: justify;
+      }
+
+      #username,
+      #password,
+      #pname,
+      #pcontact,
+      #email {
+        margin-right: 20px;
+        border-radius: 5%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="register" style="background-color: #f6f6f2">
+      <h1 style="color: #02353c; font-size: 40px; font-weight: bold">
+        Register
+      </h1>
+      <div class="links">
+        <div id="login">
+          <a href="{{ url_for('userlogin') }}" style="color: #f6f6f2">Login</a>
+        </div>
+        <div id="register">
+          <a href="{{ url_for('user_register') }}" style="color: #f6f6f2"
+            >Register</a
+          >
+        </div>
+      </div>
+      <form
+        action="{{ url_for('user_register') }}"
+        method="post"
+        autocomplete="off"
+      >
+        <div class="form-component">
+          <div style="display: flex; flex-direction: row">
+            <label for="username">
+              <i class="fas fa-user" style="color:#02353c;"></i>
+            </label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Enter Username"
+              id="username"
+              required
+            />
+          </div>
+
+          <div style="display: flex; flex-direction: row">
+            <label for="password">
+              <i class="fas fa-lock" style="color:#02353c;"></i>
+            </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter Password"
+              id="password"
+              required
+            />
+          </div>
+
+          <div style="display: flex; flex-direction: row">
+            <label for="pname">
+              <i class="fas fa-address-book" style="color:#02353c;"></i>
+            </label>
+            <input
+              type="text"
+              name="pname"
+              placeholder="Enter Your Name"
+              id="pname"
+              required
+            />
+          </div>
+
+          <div style="display: flex; flex-direction: row">
+            <label for="page">
+              <i class="fas fa-calendar" style="color:#02353c;"></i>
+            </label>
+            <input
+              type="text"
+              name="page"
+              placeholder="Enter Age"
+              id="page"
+              required
+            />
+          </div>
+
+          <div style="display: flex; flex-direction: row">
+            <label for="pcontact">
+              <i class="fas fa-phone" style="color:#02353c;"></i>
+            </label>
+            <input
+              type="text"
+              name="p_contact"
+              placeholder="Enter Contact Number"
+              id="p_contact"
+              required
+            />
+          </div>
+        </div>
+        <div class="msg" style="color: #ffffff">{{ msg }}</div>
+        <input
+          type="submit"
+          value="Register"
+          style="
+            background-color: #388087;
+            color: #f6f6f2;
+            font-size: 20px;
+            border: none;
+            border-radius: 5%;
+          "
+        />
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    />
+
+    <style>
+      body {
+        background-color: #f6f6f2;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      .mobile-container {
+        max-width: 100%;
+        margin: auto;
+        background-color: #555;
+        height: auto;
+        color: white;
+        border-radius: 10px;
+      }
+
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+        position: relative;
+      }
+
+      .topnav #myLinks {
+        display: none;
+      }
+
+      .topnav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+      }
+
+      .topnav a.icon {
+        background: black;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+      }
+
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .active {
+        background-color: #f6f6f2;
+        color: white;
+      }
+
+      .topnav #logoimage {
+        height: 25px;
+      }
+
+      .topnav #logoimage img {
+        margin-left: 15px;
+        height: 120%;
+      }
+
+      .contianer {
+        display: flex;
+        flex-direction: row;
+      }
+
+      #addpimg {
+        width: 100%;
+        height: 38.5rem;
+        border-bottom-right-radius: 25%;
+      }
+
+      /* .img .h1 {
+        margin-top: 30px;
+        color: #02353c;
+      } */
+
+      .btn {
+        padding: 15px 25px;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        background-color: #ffe4e1;
+        border: none;
+        border-radius: 15px;
+        padding: 32px 32px;
+        box-shadow: 10px 10px #c71585;
+        margin-left: 700px;
+        margin-top: 250px;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 8px;
+        text-decoration: none;
+      }
+
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: #111;
+      }
+
+      .btn:hover {
+        background-color: #ffe5b4;
+      }
+
+      .btn:active {
+        background-color: #ffffcc;
+        box-shadow: 0 5px #ffe5b4;
+        transform: translateY(4px);
+      }
+
+      .btn {
+        background-color: #ffff00;
+        border: none;
+        color: black;
+        padding: 16px 32px;
+        text-align: center;
+        font-size: 16px;
+        opacity: 0.6;
+        transition: 0.3s;
+        margin-left: 50px;
+        margin-top: 100px;
+      }
+
+      .btn:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="mobile-container">
+      <!-- Top Navigation Menu -->
+      <div class="topnav">
+        <a id="logoimage" class="active"
+          ><img src="/static/images/logo1.png"
+        /></a>
+        <div id="myLinks">
+          <a href="/">Home</a>
+          <!-- <a href="/LoginUser">User Login</a> -->
+          <a href="/aboutus">About Us</a>
+          <a href="/options">Logout</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="img-container" style="width: 50%; float: left">
+        <img id="addpimg" src="/static/images/result2.jpg" alt="addp-img" />
+      </div>
+      <div
+        class="text-container"
+        style="width: 50%; float: right; text-align: center; margin-top: 5rem"
+      >
+        <h1 class="h1" style="color: #388087">
+          <p>
+            WELCOME TO OUR PORTAL<br />
+            THIS IS HOW OCT MACHINE LOOKS LIKE! &#128516;
+          </p>
+        </h1>
+        <a href="/AddP">
+          <button class="btn">Add Patient</button>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>

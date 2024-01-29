@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+		<title>Video</title>
+		<style>
+		#myVideo {
+		  margin-top: 20%
+		  position: fixed;
+		  right: 0;
+		  bottom: 0;
+		  min-width: 100%;
+		  min-height: 50%;
+		}
+
+		/* Add some content at the bottom of the video/page */
+		.content {
+		  position: fixed;
+		  bottom: 0;
+		  background: rgba(0, 0, 0, 0.5);
+		  color: #f1f1f1;
+		  width: 100%;
+		  padding: 10px;
+		}
+
+		.button {
+		  border-radius: 2px;
+		  background-color: #f4511e;
+		  border: none;
+		  color: #FFFFFF;
+		  text-align: center;
+		  font-size: 28px;
+		  padding: 20px;
+		  width: 150px;
+		  transition: all 0.5s;
+		  cursor: pointer;
+		  margin: 5px;
+		  <!-- margin-left: 1100px; -->
+		}
+
+		.button span {
+		  cursor: pointer;
+		  display: inline-block;
+		  position: relative;
+		  transition: 0.5s;
+		}
+
+		.button span:after {
+		  content: '\00bb';
+		  position: absolute;
+		  opacity: 0;
+		  top: 0;
+		  right: -20px;
+		  transition: 0.5s;
+		}
+
+		.button:hover span {
+		  padding-right: 25px;
+		}
+
+		.button:hover span:after {
+		  opacity: 1;
+		  right: 0;
+		}
+
+		</style>
+	</head>
+	<body>
+	<!-- The video -->
+	<video autoplay muted loop id="myVideo">
+		<source src={{ url_for('static', filename="eye.mp4") }} type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+
+	<!-- Optional: some overlay text to describe the video -->
+	<div class="content">
+	  <h1>PRE-EARLY GLAUCOMA DISEASE DETECTION</h1>
+	  <p><i>It's essential to keep your retina functioning properly to enjoy a lifetime of good eyesight. Many retina problems can be detected by your eye doctor before you notice any significant symptoms.</i></p>
+	  <!-- Use a button to pause/play the video with JavaScript -->
+	  <a href="/options">
+	  <button class="button"><span>Next</span></button>
+	  </a>
+	  
+	</div>
+	</body>
+</html>	

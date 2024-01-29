@@ -1,0 +1,260 @@
+<html>
+<style>
+  .mobile-container {
+    max-width: 100%;
+    margin: auto;
+    background-color: #555;
+    height: auto;
+    color: white;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+  }
+
+  .topnav #myLinks {
+    display: none;
+  }
+
+  .topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+
+  .topnav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .active {
+    background-color: #f6f6f2;
+    color: white;
+  }
+
+  .topnav #logoimage {
+    height: 25px;
+  }
+
+  .topnav #logoimage img {
+    margin-left: 15px;
+    height: 120%;
+  }
+
+  .result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .patient-info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    align-self: center;
+    /* margin-left: 10px; */
+
+  }
+
+  #content1 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 10rem;
+  }
+
+  #content2 {
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+    padding-right: 10rem;
+  }
+
+  .medical-report {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+
+    text-align: center;
+  }
+
+  #content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #result-data {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    width: max-content;
+    align-self: center;
+    justify-content: center;
+    /* padding-left: 20px; */
+    max-width: 70%;
+  }
+
+
+  #result-data p {
+    margin-top: 1.3rem;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+  }
+
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
+  }
+
+  .button7 {
+    display: inline-block;
+    margin: 0 0.3em 0.3em 0;
+    width: 80px;
+    height: 50px;
+    border-radius: 0.2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #fff;
+    background-color: #034a53;
+    box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+      inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+      inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+  }
+</style>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body
+  style="background-image: url(../static/images/back4.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+  <div class="mobile-container">
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+      <a id="logoimage" class="active"><img src="/static/images/logo1.png" /></a>
+      <div id="myLinks">
+        <a href="/video">Home</a>
+        <a href="/aboutus">About Us</a>
+        <a href="/options">Logout</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+  <!-- Retinal Disease Diagnosis Tool<br /> -->
+
+  <div class="outside"
+    style="display: flex; flex-direction: column; background-color: #fff; max-width: 90%; max-height: auto; opacity: 0.95; margin-top: 1.5rem; margin-left: 4.5rem;">
+    <h1 style="color: #034a53; text-align: center; text-decoration: underline;">
+      <b>Patient Medical Record</b>
+    </h1>
+    <div class="result-container">
+      <h2 style="color: red; text-align: center;">Patient Information</h2>
+
+      <div class="patient-info">
+        <div id="content1">
+          <div id="result-data">
+            <h3 style="color: rgb(112, 23, 3); font-size: 20px;">Name:</h3>
+            <p style="color: darkorange; font-size: 20px;"><b>{{name}}</b></p>
+          </div>
+          <div id="result-data">
+            <h3 style="color: rgb(112, 23, 3); font-size: 20px;">Mobile Number:</h3>
+            <p style="color: orange; font-size: 20px;"><b>{{ph_no}}</b></p>
+          </div>
+        </div>
+        <div id="content2">
+          <div id="result-data">
+            <h3 style="color: rgb(112, 23, 3); font-size: 20px;">Age:</h3>
+            <p style="color: orange; font-size: 20px;"><b>{{Age}}</b></p>
+          </div>
+          <div id="result-data">
+            <h3 style="color: rgb(112, 23, 3); font-size: 20px;">Address:</h3>
+            <p style="color: orange; font-size: 20px;"><b>{{addr}}</b></p>
+          </div>
+        </div>
+
+      </div>
+      <hr style="width:95%;text-align:center;margin-left:30px">
+
+      <div class="medical-report">
+        <h2 style="color: red">Medical Report</h2>
+        <div id="content" style="width: 100%;">
+          <div id="result-data">
+            <h3 style="color: rgb(112, 23, 3); font-size: 20px;">Disease:</h3>
+            <p style="color: orange; font-size: 20px;"><b>{{disease}}</b></p>
+          </div>
+          <div id="result-data">
+            <h3 style="color: rgb(112, 23, 3); font-size: 20px;">Date of Visit:</h3>
+            <p style="color: orange; font-size: 20px;"><b>{{dov}}</b></p>
+          </div>
+          <div id="result-data">
+            <h3 style="color: rgb(112, 23, 3); font-size: 20px;">Introcular Pressure:</h3>
+            <p style="color: orange; font-size: 20px;"><b>{{iop}}</b></p>
+          </div>
+        </div>
+
+      </div>
+      <hr style="width:95%;text-align:center;margin-left:30px">
+    </div>
+    <div id="editor" style="text-align: center;">
+      <br />
+      <input type="button" value="Save" class="button7" onClick="window.print()" />
+    </div>
+  </div>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+  </script>
+</body>
+
+</html>

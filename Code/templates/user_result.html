@@ -1,0 +1,228 @@
+<html>
+  <style>
+    .mobile-container {
+      max-width: 100%;
+      margin: auto;
+      background-color: #555;
+      height: auto;
+      color: white;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+      position: relative;
+    }
+
+    .topnav #myLinks {
+      display: none;
+    }
+
+    .topnav a {
+      color: white;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      display: block;
+    }
+
+    .topnav a.icon {
+      background: black;
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .active {
+      background-color: #f6f6f2;
+      color: white;
+    }
+
+    .topnav #logoimage {
+      height: 25px;
+    }
+
+    .topnav #logoimage img {
+      margin-left: 15px;
+      height: 120%;
+    }
+
+    .result-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      gap: 20px;
+    }
+
+    .patient-info {
+      width: 100%;
+      height: auto;
+      margin-left: 10px;
+    }
+
+    .medical-report {
+      width: 100%;
+      height: auto;
+      margin-left: 10px;
+    }
+
+    #result-data {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    #result-data p {
+      margin-top: 1.3rem;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 8px;
+      text-decoration: none;
+    }
+
+    /* Change the link color to #111 (black) on hover */
+    li a:hover {
+      background-color: #111;
+    }
+
+    .button7 {
+      display: inline-block;
+      padding: 0.7em 1.7em;
+      margin: 0 0.3em 0.3em 0;
+      border-radius: 0.2em;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      color: #ffffff;
+      background-color: #3369ff;
+      box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+        inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+        inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+      text-align: center;
+      position: relative;
+    }
+  </style>
+
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+
+  <body style="background-color: #f6f6f2">
+    <div class="mobile-container">
+      <!-- Top Navigation Menu -->
+      <div class="topnav">
+        <a id="logoimage" class="active"
+          ><img src="/static/images/logo1.png"
+        /></a>
+        <div id="myLinks">
+          <a href="/">Home</a>
+          <a href="/aboutus">About Us</a>
+          <a href="/options">Logout</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+
+    <h1 style="color: #02353c; text-align: center">
+      <b>Patient Medical Record</b>
+    </h1>
+    <div class="result-container">
+      <div class="patient-info">
+        <h2 style="color: red">Patient Information</h2>
+        <div id="content" style="width: 50%; float: left">
+          <div id="result-data">
+            <h3 style="color: #388087">Name:</h3>
+            <p style="color: green"><b>{{name}}</b></p>
+          </div>
+          <div id="result-data">
+            <h3 style="color: #388087">Mobile Number:</h3>
+            <p style="color: green"><b>{{ph_no}}</b></p>
+          </div>
+        </div>
+        <div id="content" style="width: 50%; float: right">
+          <div id="result-data">
+            <h3 style="color: #388087">Age:</h3>
+            <p style="color: green"><b>{{Age}}</b></p>
+          </div>
+          <div id="result-data">
+            <h3 style="color: #388087">Address:</h3>
+            <p style="color: green"><b>{{addr}}</b></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="medical-report">
+        <h2 style="color: red">Medical Report</h2>
+        <div id="content" style="width: 50%; float: left">
+          <div id="result-data">
+            <h3 style="color: #388087">Disease:</h3>
+            <p style="color: green"><b>{{iop_result}}</b></p>
+          </div>
+          <div id="result-data">
+            <h3 style="color: #388087">Date of Visit:</h3>
+            <p style="color: green"><b>{{dov}}</b></p>
+          </div>
+          <div id="result-data">
+            <h3 style="color: #3369ff">Introcular Pressure:</h3>
+            <p style="color: green"><b>{{iop}}</b></p>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    <div id="editor" style="width: 50%; float: right">
+      <br /><br /><br /><br /><br />
+      <input
+        type="button"
+        value="Save"
+        class="button7"
+        onClick="window.print()"
+      />
+    </div>
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
